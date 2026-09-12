@@ -11,3 +11,7 @@ reference/video-swap.js
 *.log
 .DS_Store
 Thumbs.db
+promo-video/node_modules/
+promo-video/public/
+promo-video/.bundle/
+*.mp4

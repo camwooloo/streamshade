@@ -1,0 +1,10 @@
+STREAMSHADE — CHROME WEB STORE IMAGES
+
+Screenshots field: upload Screenshot-01 through Screenshot-05, in that order.
+Small promo tile field: Small-Promo-Tile-440x280.png
+Marquee promo tile field: Marquee-Promo-Tile-1400x560.png
+
+All seven files are 24-bit RGB PNGs with no transparency, at the exact requested sizes.
+Screenshots use the actual v0.2.1 extension with default preferences and zero counters in a separate test profile. No Twitch account, chats, or private user data are shown. Screenshot 02 combines the actual popup with explanatory artwork. Promo tiles use the original Streamshade artwork and actual popup.
+
+The marquee tile is optional. The five screenshots fill the maximum allowed slots.

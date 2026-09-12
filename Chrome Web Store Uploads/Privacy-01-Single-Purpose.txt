@@ -1,0 +1,1 @@
+Streamshade provides a customizable Twitch viewing experience by reducing playback interruptions and on-page distractions. Its Twitch-only features let users choose ad-handling behavior, adjust chat appearance and the channel sidebar, hide promotional controls, and enable viewing helpers such as bonus-point claiming and stream uptime.

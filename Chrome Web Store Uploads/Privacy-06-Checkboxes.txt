@@ -1,0 +1,19 @@
+FOR STREAMSHADE 0.2.1
+
+CHECK:
+- Personally identifiable information
+- Authentication information
+- Personal communications
+- Web history
+- User activity
+- Website content
+
+LEAVE UNCHECKED:
+- Health information
+- Financial and payment information
+- Location
+
+CERTIFICATIONS:
+All three statements match the current code: no sale or unrelated transfer, no use outside the stated purpose, no creditworthiness or lending use.
+
+Local-only handling still requires disclosure. The guide explains how each checked category maps to Twitch processing; none means data is uploaded to a Streamshade analytics service.

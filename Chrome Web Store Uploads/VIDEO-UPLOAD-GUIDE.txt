@@ -1,0 +1,12 @@
+STREAMSHADE PROMO VIDEO
+
+File: Streamshade-Promo-Video-1920x1080.mp4
+Format: MP4 / H.264, 1920x1080, 30 fps, 30 seconds.
+Audio: silent; all information is on screen.
+
+To use it in the Chrome Web Store, upload the MP4 to your YouTube channel with embedding enabled, then paste the YouTube video URL into the store listing's promotional video field. The field takes a YouTube link rather than a local MP4. No upload to YouTube has been made by this task.
+
+Suggested title: Streamshade — Your Twitch. Your way.
+Suggested description: A quick look at Streamshade, an open-source Chrome extension with configurable Twitch ad handling, chat and sidebar controls, and guided setup. Replacement streams depend on Twitch; ad-free playback is not guaranteed. Source and downloads: https://github.com/camwooloo/streamshade
+
+Editable Remotion source: promo-video/

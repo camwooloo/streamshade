@@ -1,0 +1,41 @@
+Streamshade — a little less noise, a lot more live.
+
+Make Twitch feel more like your space. Streamshade brings configurable ad handling, chat styling, a tidier sidebar, and everyday viewing extras together in one Chrome extension.
+
+CHOOSE HOW TO HANDLE AD BREAKS
+• Smart quality: uses the bundled VAFT engine to look for a clean replacement stream at your current resolution before trying lower-quality alternatives.
+• Low-bandwidth: prefers a lighter replacement stream near 360p during ad breaks.
+• Mute ads: keeps normal ad playback and temporarily silences the video.
+• Choose what happens when no clean replacement is available: mute the ad or wait for a clean stream.
+
+MAKE CHAT YOUR OWN
+• Add alternating message backgrounds for easier reading.
+• Hide the chat scrollbar while keeping scrolling available.
+• Move chat to the left of the player.
+• Choose how deleted messages already received in the current tab appear: Twitch default, hidden, dimmed, strikethrough, or kept visible.
+
+KEEP THE SIDEBAR FOCUSED
+• Expand your collapsed channel list when you hover over it.
+• Individually hide Stories, Viewers Also Watch, suggested live channels, and recommended categories.
+
+LESS PROMOTION, MORE CONTROL
+• Hide Bits purchase buttons, the Prime crown, and Turbo trial promotions.
+• Show available stream uptime on preview cards.
+• Pause featured-stream autoplay on Twitch's home page.
+• Optionally claim available channel-point bonuses automatically. Streamshade never spends points or redeems rewards.
+
+EASY TO SET UP
+A guided setup walks you through every group of preferences. Use the toolbar popup for quick changes, or open All settings to fine-tune your experience. Revisit setup whenever you like.
+
+LOCAL PREFERENCES, NO ANALYTICS
+Settings and aggregate counters stay in your browser. No Streamshade account, analytics service, or external playback proxy is required. Playback and optional uptime requests go directly to Twitch's services. Temporary chat data stays in the current tab and is not saved as chat history. See the privacy policy for details about the Twitch data processed by enabled features.
+
+PLEASE NOTE
+Replacement streams depend on Twitch and may not always be available. Ad-free playback and higher-resolution replacements are not guaranteed; ads may still appear, quality may drop, or playback may buffer. Twitch player and layout changes can affect features. Deleted-message styles cannot recover messages deleted before they reached the tab.
+
+Disable other Twitch-specific ad blockers or uBlock Twitch scripts before using Streamshade, then reload Twitch. General uBlock filtering can stay enabled.
+
+Streamshade is open source and uses the MIT-licensed VAFT engine from TwitchAdSolutions. It is an independent project, not affiliated with or endorsed by Twitch, 7TV, or TwitchAdSolutions contributors. 7TV emote rendering is not included.
+
+Source, releases, and support:
+https://github.com/camwooloo/streamshade

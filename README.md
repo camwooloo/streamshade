@@ -20,7 +20,7 @@ Alternative streams during ads, a calmer interface, and the little extras that m
 
 </div>
 
-> **Early access · v0.2.0** — Ready to load unpacked. Chrome Web Store installation is not available yet. Clean replacement streams depend on Twitch; higher resolution and ad-free playback are not guaranteed.
+> **Early access · v0.2.1** — Ready to load unpacked. Chrome Web Store installation is not available yet. Clean replacement streams depend on Twitch; higher resolution and ad-free playback are not guaranteed.
 
 ## Stay with the stream
 
@@ -43,7 +43,7 @@ When no clean backup is available, the default fallback mutes the ad. You can tu
 | **Channel sidebar** | Hover to expand; hide Stories, Viewers Also Watch, suggested live channels, and recommended categories individually. |
 | **Less promotion** | Hide Bits buying, the Prime crown, and Turbo promotions, including **Try 1-Month Ad-Free**. |
 | **Browsing** | Stream-preview uptime and an option to pause featured front-page autoplay. |
-| **First-run setup** | A three-step welcome flow with playback choices, optional extras, and a review before saving. |
+| **First-run setup** | Seven steps covering every playback, extras, chat, sidebar, and browsing preference, with a review before saving. |
 
 Bonus claiming only clicks the available bonus button; it never spends points or redeems rewards. Deleted-message styles can retain text received while enabled in the current tab, but cannot recover messages deleted before they arrived. 7TV emote rendering is not included.
 
@@ -70,13 +70,19 @@ Bonus claiming only clicks the available bonus button; it never spends points or
 <img src="docs/images/settings-full.png" width="1100" alt="All Streamshade controls, including chat appearance, channel sidebar, browsing, and setup">
 </details>
 
+<details>
+<summary><strong>See chat preferences during onboarding</strong></summary>
+<br>
+<img src="docs/images/onboarding-chat.png" width="900" alt="Onboarding chat step with alternating backgrounds, scrollbar, chat position, and deleted-message style">
+</details>
+
 Screenshots show the actual extension interface using test data, with no personal account information.
 
 ## Install in Chrome
 
 **No build tools required.** Download the packaged release and load it once.
 
-1. **[Download the latest release](https://github.com/camwooloo/streamshade/releases/latest).** Under **Assets**, choose `streamshade-0.2.0.zip`, not the automatic “Source code” download.
+1. **[Download the latest release](https://github.com/camwooloo/streamshade/releases/latest).** Under **Assets**, choose `streamshade-0.2.1.zip`, not the automatic “Source code” download.
 2. **Extract the ZIP** into a permanent folder, such as `Documents/Streamshade`.
 3. Enter **`chrome://extensions`** in Chrome's address bar.
 4. Enable **Developer mode** in the top-right corner.

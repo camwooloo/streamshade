@@ -4,6 +4,8 @@ Validated on 2026-09-12. This file distinguishes automated fixtures from a live 
 
 ## Results
 
+Version 0.2.1: all 14 unit tests and the browser suite pass. Added checks that onboarding exposes every key in the settings schema, retains choices through Back, saves every section only on Finish, and displays GitHub links with Lucide SVGs. Settings navigation follows programmatic/manual scroll position in both directions, native section-link jumps, and the bottom of the page. Geometry checks confirm the sidebar navigation does not overlap its supporting text and fits short windows. The browser suite isolates onboarding choices from subsequent playback and appearance fixtures.
+
 Version 0.2.0: **14 unit tests passed**, including first-install onboarding, migration without preference resets, and no repeated setup on updates. Browser regression tests passed for the screenshot's Turbo button, dynamically inserted Turbo buttons, preservation of unrelated navigation/chat text, and the full onboarding flow (back navigation, mobile layout, save/completion). UI screenshots were visually reviewed. The real user account's current Turbo DOM was not directly inspected; this fix is verified against its supplied label/button shape.
 
 - `npm test`: **14 passed**. Covers settings validation, the upstream HLS parser, 1080p and 360p selection, clean fallback replacement, end-of-ad restoration, fallback order, mute-only pass-through, disabling, Request preservation, MV3 permission boundaries, and onboarding lifecycle.

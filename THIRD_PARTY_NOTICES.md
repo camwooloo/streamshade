@@ -14,6 +14,8 @@ Manrope and DM Mono are distributed under the SIL Open Font License 1.1. The bui
 
 ## Original assets
 
+The GitHub icon is bundled from Lucide 0.468.0 (`icons/github.svg`), distributed under the ISC license. The license is included at `extension/icons/LICENSE-lucide.txt` in source and `icons/LICENSE-lucide.txt` in the packaged extension. Source: https://github.com/lucide-icons/lucide/tree/0.468.0. Its SVG paths are also inlined in the shared GitHub link component.
+
 7TV's public extension repository was consulted for feature behavior and compatibility selectors (commit `9225dc089759510ae100496a7adeb6db92bf8117`). Its implementation code is not bundled. Streamshade's appearance and uptime implementations are original; the 7TV repository is licensed Apache 2.0 plus Commons Clause, not the VAFT MIT license.
 
 The Streamshade icon and interface artwork are original SVG/CSS assets created for this project. Twitch and 7TV names are used only to describe compatibility and future scope; their logos are not included.

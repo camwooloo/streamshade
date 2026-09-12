@@ -2,7 +2,7 @@
 
 ## Download and install
 
-1. Download **streamshade-0.2.0.zip** from the [latest release](https://github.com/camwooloo/streamshade/releases/latest). Choose the Streamshade ZIP in Assets, not GitHub's automatic Source code download.
+1. Download **streamshade-0.2.1.zip** from the [latest release](https://github.com/camwooloo/streamshade/releases/latest). Choose the Streamshade ZIP in Assets, not GitHub's automatic Source code download.
 2. Extract the ZIP into a permanent folder, such as `Documents/Streamshade`. Keep this folder in place while the extension is installed.
 3. In Chrome, enter `chrome://extensions` in the address bar.
 4. Turn on **Developer mode** in the top-right corner.

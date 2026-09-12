@@ -2,6 +2,7 @@ import { chromium } from 'playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import { DEFAULTS } from '../extension/shared.js';
 
 const extensionPath = path.resolve('dist/streamshade');
 await mkdir('artifacts', { recursive: true });
@@ -26,6 +27,24 @@ try {
   await options.evaluate(() => document.fonts.ready);
   await options.screenshot({ path: 'artifacts/settings-desktop.png', fullPage: true, animations: 'disabled' });
   await options.screenshot({ path: 'artifacts/settings-overview.png', animations: 'disabled' });
+  assert.ok(await options.locator('.topbar .github-link .lucide-github').isVisible());
+  assert.equal(await options.locator('.topbar .github-link').getAttribute('href'), 'https://github.com/camwooloo/streamshade');
+  await options.setViewportSize({width:1440,height:700});
+  for (const section of ['extras', 'chat', 'sidebar', 'browsing', 'about', 'chat', 'protection']) {
+    await options.evaluate(id => window.scrollTo(0, document.getElementById(id).getBoundingClientRect().top + scrollY - 32), section);
+    await options.waitForFunction(id => document.querySelector('.nav-link[aria-current="location"]')?.hash === '#' + id, section);
+    assert.equal(await options.locator('.nav-link.active').count(), 1);
+    assert.ok(await options.evaluate(() => document.querySelector('.sidebar-bottom').getBoundingClientRect().top >= document.querySelector('.sidebar nav').getBoundingClientRect().bottom + 20), 'Sidebar navigation must not overlap its supporting text');
+  }
+  await options.locator('.nav-link[href="#sidebar"]').click();
+  await options.waitForFunction(() => document.querySelector('.nav-link.active').hash === '#sidebar');
+  await options.screenshot({path:'artifacts/settings-scrolled.png', animations:'disabled'});
+  await options.setViewportSize({width:1000,height:600});
+  assert.ok(await options.evaluate(() => document.querySelector('.sidebar-content').getBoundingClientRect().height <= innerHeight - 48));
+  await options.setViewportSize({width:1440,height:1100});
+  await options.evaluate(()=>scrollTo(0,0));
+  await options.waitForFunction(() => document.querySelector('.nav-link.active').hash === '#protection');
+  results.push('Settings navigation tracks manual scrolling in both directions and clicks; sticky sidebar content never overlaps, including at short viewport heights.');
   await options.locator('#autoClaim').check();
   await options.waitForFunction(() => document.querySelector('#toast').textContent.startsWith('Saved'));
   assert.equal((await worker.evaluate(async () => (await chrome.storage.local.get('settings')).settings)).autoClaim, true);
@@ -42,6 +61,8 @@ try {
   assert.ok(await popup.locator('#autoClaim').isChecked());
   await popup.evaluate(() => document.fonts.ready);
   await popup.screenshot({ path: 'artifacts/popup.png', fullPage: true, animations: 'disabled' });
+  assert.ok(await popup.locator('.topbar .github-link .lucide-github').isVisible());
+  assert.ok(await popup.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   assert.ok(await popup.evaluate(() => document.body.scrollHeight <= 600), 'Popup must fit Chrome’s 600px maximum height');
   results.push('Popup shares settings; desktop and narrow layouts render without horizontal overflow.');
 
@@ -52,24 +73,48 @@ try {
   await welcome.locator('#setup-next:not([disabled])').waitFor();
   await welcome.evaluate(() => document.fonts.ready);
   await welcome.screenshot({ path: 'artifacts/onboarding-welcome.png', animations: 'disabled' });
-  await welcome.locator('#setup-next').click();
+  assert.ok(await welcome.locator('.topbar .github-link .lucide-github').isVisible());
+  const exposed = await welcome.locator('[data-choice]').evaluateAll(inputs => inputs.map(input => input.dataset.choice));
+  assert.deepEqual([...exposed, 'mode'].sort(), Object.keys(DEFAULTS).sort(), 'Onboarding must include every preference');
+  await welcome.locator('#setup-next').click(); // Playback
+  await welcome.locator('input[name="mode"][value="swap"]').check();
+  await welcome.locator('#setup-next').click(); // Extras
+  await welcome.locator('#autoClaim').uncheck();
+  await welcome.locator('#showIndicator').uncheck();
+  await welcome.locator('#setup-next').click(); // Chat
+  await welcome.locator('#chatOnLeft').check();
+  await welcome.locator('#deletedStyle').selectOption('strikethrough');
+  await welcome.screenshot({path:'artifacts/onboarding-chat.png',fullPage:true,animations:'disabled'});
+  await welcome.locator('#setup-next').click(); // Sidebar
+  await welcome.locator('#sidebarHover').check();
+  await welcome.locator('#hideStories').uncheck();
+  await welcome.locator('#setup-next').click(); // Browsing
+  await welcome.locator('#showUptime').check();
   await welcome.locator('#hideTurbo').check();
   await welcome.locator('#hidePrime').check();
-  await welcome.locator('#autoClaim').uncheck();
-  await welcome.screenshot({ path: 'artifacts/onboarding-preferences.png', fullPage: true, animations: 'disabled' });
+  await welcome.screenshot({path:'artifacts/onboarding-preferences.png',fullPage:true,animations:'disabled'});
   await welcome.setViewportSize({ width: 390, height: 844 });
-  assert.equal(await welcome.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-  await welcome.locator('#setup-next').click();
+  for (let i=0;i<6;i++) {
+    assert.equal(await welcome.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    await welcome.locator('#setup-back').click();
+    if (i===4) break; // Welcome
+  }
+  for (let i=0;i<6;i++) await welcome.locator('#setup-next').click(); // Review
+  await welcome.screenshot({path:'artifacts/onboarding-review-mobile.png',fullPage:true,animations:'disabled'});
+  assert.equal(await welcome.locator('#setup-review dt').count(), Object.keys(DEFAULTS).length);
+  assert.ok((await welcome.locator('#setup-review').innerText()).includes('Strikethrough'));
+  assert.equal(await worker.evaluate(async () => (await chrome.storage.local.get('settings')).settings.mode), 'adaptive', 'Draft must not save before Finish');
   await welcome.locator('#setup-back').click();
   assert.ok(await welcome.locator('#hidePrime').isChecked());
   await welcome.locator('#setup-next').click();
   await welcome.locator('#setup-next').click();
   await welcome.locator('#setup-done').waitFor();
   const completed = await worker.evaluate(async () => chrome.storage.local.get(['settings', 'onboarding']));
-  assert.ok(completed.onboarding.completedAt); assert.equal(completed.settings.hideTurbo, true); assert.equal(completed.settings.hidePrime, true); assert.equal(completed.settings.autoClaim, false);
+  assert.ok(completed.onboarding.completedAt); assert.equal(completed.onboarding.version, 2);
+  for (const [key,value] of Object.entries({mode:'swap',autoClaim:false,showIndicator:false,chatOnLeft:true,deletedStyle:'strikethrough',sidebarHover:true,hideStories:false,showUptime:true,hideTurbo:true,hidePrime:true})) assert.equal(completed.settings[key], value, key);
   await welcome.close();
-  await worker.evaluate(async () => { const {settings} = await chrome.storage.local.get('settings'); await chrome.storage.local.set({settings:{...settings,autoClaim:true}}); });
-  results.push('Three-step onboarding supports back navigation, mobile layout, and saving preferences plus completion status.');
+  await worker.evaluate(async defaults => chrome.storage.local.set({settings:{...defaults,autoClaim:true}}), DEFAULTS);
+  results.push('Seven-step onboarding exposes every preference, preserves drafts across Back, reviews and saves every section, and fits narrow screens.');
 
   const master = '#EXTM3U\n#EXT-X-STREAM-INF:BANDWIDTH=6000000,RESOLUTION=1920x1080,FRAME-RATE=60,CODECS="avc1.64002A,mp4a.40.2"\nhttps://video-edge.ttvnw.net/1080.m3u8\n#EXT-X-STREAM-INF:BANDWIDTH=700000,RESOLUTION=640x360,FRAME-RATE=30,CODECS="avc1.64001f,mp4a.40.2"\nhttps://video-edge.ttvnw.net/360.m3u8';
   const ad = '#EXTM3U\n#EXT-X-DATERANGE:ID="stitched-ad",X-TV-TWITCH-AD-POD-POSITION="MIDROLL"\n#EXTINF:2.0,ad\nhttps://video-edge.ttvnw.net/ad.ts';

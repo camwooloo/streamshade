@@ -1,6 +1,6 @@
 # Publishing Streamshade on the Chrome Web Store
 
-Prepared for version 0.2.0. Source and unpacked builds are distributed through [GitHub](https://github.com/camwooloo/streamshade). No Chrome Web Store listing has been published.
+Prepared for version 0.2.1. Source and unpacked builds are distributed through [GitHub](https://github.com/camwooloo/streamshade). No Chrome Web Store listing has been published.
 
 ## The install experience
 
@@ -11,7 +11,7 @@ After approval and publication, you share the Chrome Web Store URL. Users choose
 1. **Register a publisher.** Sign in to the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole), accept the developer agreement, and pay the one-time registration fee shown there. Set up your publisher/contact details and enable Google Account two-step verification. Registration is for the publisher, not for every user. [Registration](https://developer.chrome.com/docs/webstore/register), [account setup](https://developer.chrome.com/docs/webstore/set-up-account).
 2. **Finish the public materials.** Use `store/LISTING.md` as your listing draft. Complete `store/PRIVACY.md` with the publisher identity and contact address, host it at a publicly accessible HTTPS URL, and use that URL in the dashboard. Do not submit an unfinished contact placeholder.
 3. **Provide the listing graphics.** Supply the packaged 128px PNG icon, one 440×280 small promotional image, and at least one real screenshot at 1280×800 or 640×400. Capture the finished popup/settings/onboarding UI; don't advertise unverified ad-blocking results. [Image requirements](https://developer.chrome.com/docs/webstore/images).
-4. **Upload the package.** Choose **Add new item** and upload `dist/streamshade-0.2.0.zip`. Its root contains `manifest.json`. Fill in the Store listing, Privacy practices, Distribution, and Test instructions sections. Use the justification and reviewer notes in `store/LISTING.md`. [Publishing instructions](https://developer.chrome.com/docs/webstore/publish).
+4. **Upload the package.** Choose **Add new item** and upload `dist/streamshade-0.2.1.zip`. Its root contains `manifest.json`. Fill in the Store listing, Privacy practices, Distribution, and Test instructions sections. Use the justification and reviewer notes in `store/LISTING.md`. [Publishing instructions](https://developer.chrome.com/docs/webstore/publish).
 5. **Choose visibility.** Public is searchable; Unlisted is installable by anyone with the link; Private restricts installation to your selected testers. I suggest Unlisted for initial feedback. All three still undergo policy review. [Distribution options](https://developer.chrome.com/docs/webstore/cws-dashboard-distribution).
 6. **Submit for review.** Google can approve, request changes, or reject the item. You can defer publication until after approval. When published, share the store URL. Upload subsequent ZIPs to the same item with a higher manifest version to deliver updates.
 

@@ -1,0 +1,45 @@
+/* Every change is scoped to an extension class and reverses when switched off. */
+html.ss-alternatingChat .chat-scrollable-area__message-container > .chat-line__message:nth-child(even),
+html.ss-alternatingChat .chat-scrollable-area__message-container > div:nth-child(even) > .chat-line__message,
+html.ss-alternatingChat .seventv-chat-message:nth-child(even){background-color:color-mix(in srgb,currentColor 5%,transparent)!important}
+html.ss-hideChatScrollbar .chat-scrollable-area__message-container,html.ss-hideChatScrollbar .chat-scrollable-area__message-container *{scrollbar-width:none!important}
+html.ss-hideChatScrollbar .chat-scrollable-area__message-container::-webkit-scrollbar,
+html.ss-hideChatScrollbar .chat-scrollable-area__message-container ::-webkit-scrollbar{display:none!important}
+html.ss-hideChatScrollbar .chat-scrollable-area__message-container~.simplebar-track,
+html.ss-hideChatScrollbar .chat-scrollable-area__message-container~.os-scrollbar,
+html.ss-hideChatScrollbar .chat-scrollable-area .simplebar-track,
+html.ss-hideChatScrollbar .chat-scrollable-area .os-scrollbar{visibility:hidden!important}
+html.ss-hideChatScrollbar .chat-scrollable-area .simplebar-scroll-content,html.ss-hideChatScrollbar .chat-scrollable-area .simplebar-content-wrapper,html.ss-hideChatScrollbar .chat-scrollable-area .scrollable-area{scrollbar-width:none!important}
+html.ss-hideBits [data-a-target="top-nav-get-bits-button"],html.ss-hideBits [data-a-target="bits-purchase-button"],html.ss-hideBits [data-test-selector="bits-purchase-button"],html.ss-hideBits .top-nav__get-bits{display:none!important}
+html.ss-hidePrime .top-nav__prime,html.ss-hidePrime [data-a-target="prime-offers-icon"],html.ss-hidePrime [data-a-target="prime-offers-button"]{display:none!important}
+html.ss-hideTurbo [data-a-target="top-nav-turbo-link"],html.ss-hideTurbo [data-test-selector="turbo-upsell"],html.ss-hideTurbo .top-nav a[href^="/turbo"],html.ss-hideTurbo .top-nav a[href^="https://www.twitch.tv/turbo"],html.ss-hideTurbo [data-streamshade-promotion="turbo"],html.ss-hideTurbo [data-a-target="top-nav-container"] [data-a-target="turbo-button"],html.ss-hideTurbo [data-a-target="top-nav-container"] [data-test-selector="turbo-button"]{display:none!important}
+html.ss-hideStories [data-a-target="stories-section"],html.ss-hideStories [data-test-selector="stories-section"],html.ss-hideStories [class*="storiesLeftNavSection"],html.ss-hideStories [class*="storiesShelf"],html.ss-hideStories [data-streamshade-hide="stories"]{display:none!important}
+html.ss-hideViewersAlsoWatch [data-streamshade-hide="viewers"],html.ss-hideViewersAlsoWatch [data-a-target="side-nav-viewers-also-watch"],html.ss-hideViewersAlsoWatch [data-test-selector="viewers-also-watch"]{display:none!important}
+html.ss-hideSuggestedChannels [data-streamshade-hide="suggested"],html.ss-hideSuggestedChannels [data-a-target="side-nav-recommended"],html.ss-hideSuggestedChannels [data-a-target="side-nav-live-channels"],html.ss-hideSuggestedChannels [data-test-selector="recommended-channels"]{display:none!important}
+html.ss-hideRecommendedCategories [data-streamshade-hide="categories"],html.ss-hideRecommendedCategories [data-a-target="side-nav-recommended-categories"],html.ss-hideRecommendedCategories [data-test-selector="recommended-categories"]{display:none!important}
+/* Twitch's columns use fixed positioning on desktop. Swap their anchor sides
+   and reserve chat space inside the player column; keep native mobile layout. */
+@media(min-width:1000px){
+  html.ss-chatOnLeft .channel-root__right-column{left:0!important;right:auto!important}
+  html.ss-chatOnLeft .channel-root__main{padding-left:var(--ss-chat-width,340px)!important;padding-right:0!important}
+  html.ss-chatOnLeft .side-nav{left:auto!important;right:0!important}
+  html.ss-chatOnLeft .side-nav--expanded{right:0!important}
+  html.ss-chatOnLeft .twilight-main{margin-left:0!important;margin-right:var(--ss-sidebar-width,50px)!important}
+  html.ss-chatOnLeft .right-column--collapsed{left:0!important;right:auto!important}
+  html.ss-chatOnLeft .ss-layout-row>.ss-chat-column{order:0!important;flex:0 0 var(--ss-chat-width,340px)!important;width:var(--ss-chat-width,340px)!important;position:relative!important}
+  html.ss-chatOnLeft .ss-layout-row>.ss-main-column{order:1!important;margin:0!important;min-width:0!important}
+  html.ss-chatOnLeft .ss-layout-row>.ss-nav-column{order:2!important}
+  html.ss-chatOnLeft .ss-layout-row .channel-root__right-column{position:relative!important;left:0!important;right:auto!important;transform:none!important}
+  html.ss-chatOnLeft .ss-layout-row .channel-root__main--with-chat{width:100%!important;margin:0!important;padding:0!important}
+  html.ss-chatOnLeft .ss-layout-row .channel-root__player--with-chat{width:100%!important}
+  html.ss-chatOnLeft .ss-layout-row .persistent-player:not([data-a-player-state="mini"]){width:100%!important;left:0!important;right:auto!important}
+}
+.ss-uptime{display:block!important;position:absolute;left:8px;bottom:8px;z-index:4;padding:4px 7px;border-radius:4px;background:#111d20eb;color:#b9f6cf;font:600 11px/1.2 system-ui;pointer-events:none;white-space:nowrap}
+.ss-card-position{position:relative!important}
+html:not(.ss-showUptime) .ss-uptime{display:none!important}
+html.ss-deleted-hidden .ss-deleted{display:none!important}
+html.ss-deleted-dimmed .ss-deleted{opacity:.45!important}
+html.ss-deleted-strikethrough .ss-deleted{text-decoration:line-through!important;opacity:.65!important}
+.ss-deleted-copy{white-space:pre-wrap;overflow-wrap:anywhere}
+.ss-deleted-note{font-size:.85em;opacity:.7;margin-left:.4em}
+.ss-deleted.ss-has-copy [data-a-target="chat-deleted-message-placeholder"],.ss-deleted.ss-has-copy .chat-line__message--deleted-notice{display:none!important}

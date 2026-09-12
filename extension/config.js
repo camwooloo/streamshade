@@ -1,0 +1,2 @@
+// Generated from shared.js
+globalThis.StreamshadeDefaults = Object.freeze({"enabled":true,"mode":"adaptive","autoClaim":false,"showIndicator":true,"muteFallback":true,"alternatingChat":true,"hideChatScrollbar":true,"showUptime":false,"hideStories":true,"hideViewersAlsoWatch":true,"hideSuggestedChannels":true,"hideRecommendedCategories":true,"chatOnLeft":false,"deletedStyle":"dimmed","pauseFeatured":true,"hideBits":false,"hidePrime":false,"hideTurbo":true,"sidebarHover":false});

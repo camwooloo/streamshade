@@ -1,0 +1,13 @@
+node_modules/
+dist/
+artifacts/
+.test-profile/
+*.zip
+reference/seventv/
+reference/video-swap.js
+.live-smoke-profile/
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db

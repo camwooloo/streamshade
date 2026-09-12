@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Streamshade — Twitch companion",
+  "version": "0.2.0",
+  "homepage_url": "https://github.com/camwooloo/streamshade",
+  "description": "Stay with the stream. Alternative stream playback during ads, ad muting, and automatic bonus-point claiming.",
+  "minimum_chrome_version": "111",
+  "permissions": ["storage"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": {
+    "default_title": "Streamshade",
+    "default_popup": "ui/popup.html",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "options_page": "ui/options.html",
+  "content_scripts": [
+    { "matches": ["https://www.twitch.tv/*", "https://player.twitch.tv/*", "https://m.twitch.tv/*"], "js": ["engine/vaft.js", "page-data.js"], "run_at": "document_start", "world": "MAIN", "all_frames": true },
+    { "matches": ["https://www.twitch.tv/*", "https://player.twitch.tv/*", "https://m.twitch.tv/*"], "js": ["config.js", "content.js", "features.js"], "css": ["features.css"], "run_at": "document_start", "all_frames": true }
+  ],
+  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none'" }
+}

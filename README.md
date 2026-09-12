@@ -100,6 +100,8 @@ Keep the extracted folder in place. Chrome remembers your installation across re
 
 ## Private by design
 
+[Read the privacy policy →](store/PRIVACY.md)
+
 - **One extension API permission:** `storage`. Content scripts run on `www.twitch.tv`, `player.twitch.tv`, and `m.twitch.tv`.
 - **Local preferences:** settings, setup completion, and aggregate counters stay in your browser.
 - **No analytics, account, or external proxy.** Fonts, icons, and blocker logic are bundled.
